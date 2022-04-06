@@ -1,0 +1,27 @@
+{
+  "name": "rent-a-car-express",
+  "version": "1.0.0",
+  "description": "Yazılım Proje Yönetimi dersi projesi",
+  "main": "app.js",
+  "scripts": {
+    "start": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selmanjir/Rent-a-car-express.js.git"
+  },
+  "author": "Selman Jir CAN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/selmanjir/Rent-a-car-express.js/issues"
+  },
+  "homepage": "https://github.com/selmanjir/Rent-a-car-express.js#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.18.0",
+    "sequelize-cli": "^6.4.1"
+  }
+}
