@@ -1,0 +1,136 @@
+@import url(//fonts.googleapis.com/css?family=Lato:100,300,300i,400);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Lato, Arial;
+  text-align: center;
+  background-color: #a31700;
+  margin-top: 0;
+  
+}
+.header{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  height:150px; 
+  margin-bottom:10px;
+  background-color: #000;
+  margin-top: 0;
+  padding-left: 50px;
+  padding-top: 55px;
+}
+#ust{
+  display: inline-block;
+  margin:auto;
+  color: #dc7633;
+  text-align: left;
+}
+h6 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+
+}
+
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #6E2C00;
+  font-weight: 400;
+  text-align: center;
+  font-size: 400%;
+  letter-spacing: 4px;
+  text-shadow: 3px 2px 1px #000;
+}
+
+h3 {
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 1em;
+  color: #6E2C00;
+  font-size: 150%;
+  font-weight: 300;
+  text-align: center;
+}
+.buton-header{
+  display:inline-block;
+  width: 40%;
+}
+button {
+  
+  display: inline;
+  background: #e59866;
+  color: #dc7633;
+  border: 0;
+  padding: 4px;
+}
+
+input {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    display: block;
+    width: 70%;
+  height: 30px; 
+    margin-top: 1.0em;
+   padding: 4px;
+}
+
+
+.login-box {
+  padding: 1em 1em 1em 1em;
+  margin: auto;
+  text-align: center;
+  display: block;
+  background-color: #fff;
+  width: 40%;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;;
+  
+}
+
+.btn-homepage{
+
+  display:inline-block;
+  color:#fff;
+  background-color: #a31700;
+  width: 150px ;
+  height: 50px;
+}
+#btn-anasayfa{
+  background-color: #000;
+}
+#buton-header2.buton-header{
+  padding-left:10%;
+}
+#btn-login {
+  display: block;
+  width: 75%;
+  height: 40px;
+  margin-top: 2.0em;
+  border-radius: 4px;
+  background-color: #a31700;
+  color: #fff;
+  box-shadow: rgba(7, 7, 7, 0.4) 5px 5px, rgba(7, 6, 7, 0.3) 10px 10px, rgba(7, 7, 7, 0.2) 15px 15px, rgba(5, 5, 5, 0.1) 20px 20px, rgba(3, 3, 3, 0.05) 25px 25px;
+}
+
+#btn-forgot {
+  display: block;
+  width: 100%;
+  margin-top: 1.0em;
+  border-radius: 2px;
+  color: #000;
+  background-color: #fff ;
+}
+.footer{
+  position:absolute;
+  bottom: 0;
+  right: 0;
+  left :0;
+  text-align: center;
+  padding : 1rem;
+  background : #000;
+  font-size : 19px;
+}
