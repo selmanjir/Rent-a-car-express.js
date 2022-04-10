@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "RentACar",
+    "database": "rent_a_car",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
