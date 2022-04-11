@@ -113,8 +113,33 @@ const registerPost = async (req, res, next) => 	{
     }
     
 }
-
+const login = async (req, res, next) => {
+    
+    res.render('login',{
+        layout: './layout/layout.ejs'
+    });
+}
+const loginPost = async (req ,res, next) => {
+    const errors  = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+        // requestten gelen hatalar objesi boş değilse validation_error yolla içini errors dizi ile doldur 
+        req.flash('validation_error', errors.array());
+        
+    }
+    let olds = {'email' : req.body.email}
+    req.flash('olds',olds)
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    })
+    (req, res, next);
+    
+};
 module.exports = {
     register,
-    registerPost
+    registerPost,
+    login,
+    loginPost
 }

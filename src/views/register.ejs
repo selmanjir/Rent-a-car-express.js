@@ -3,30 +3,36 @@
 <head>
   
   <script src="https://kit.fontawesome.com/9d4bc0dc18.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/tasarim1.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RENT A CAR</title>
-    
+  <base href="/">
+  <link rel="stylesheet" href="/css/tasarim1.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENT A CAR</title>
+  
 </head>
 <body>
-    <form action="/register-post" method="post"  class="user">
+  <% if (locals.validation_error != undefined ) { %>
+    <%- include('./partials/_message') %> 
+    <% } %>
+  <form action="/register-post" method="post"  class="user">
+    
       <div class="login-box">
         <h1 class="login-text"><strong>SETCAR</strong></h1>
         <center>
           <input name="full_name" placeholder="Adınız soyadınınz">
           <input name="username" placeholder="Kullanıcı Adınız">
-          <input name="email" placeholder="E-posta Adresi">
-          <input name="password" placeholder="Parola">
-          <input name="repassword" placeholder="Parola Tekrar">
-  
-        <button id="btn-login">ÜYE OL</button>
-        <button id="btn-forgot">Zaten Hesabın Var Mı? <a href="uyeliksayfası">Hemen Giriş Yap!</a></button>
+          <input type="email" name="email" placeholder="E-posta Adresi">
+          <input type="password" name="password" placeholder="Parola">
+          <input type="password" name="repassword" placeholder="Parola Tekrar">
+          
+          <button id="btn-login">ÜYE OL</button>
+          <button id="btn-forgot">Zaten Hesabın Var Mı? <a href="/login">Hemen Giriş Yap!</a></button>
         </center>
       </div>
     </form>
+    
+    
+  </body>
+  </html>
   
-
-</body>
-</html>

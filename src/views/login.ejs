@@ -3,27 +3,38 @@
 <head>
   
   <script src="https://kit.fontawesome.com/9d4bc0dc18.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="tasarim.css">
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RENT A CAR</title>
-    
-</head>
-
-    <form action="/login-post" method="post" class="user">
-      <div class="login-box">
-        <h1 class="login-text"><strong>SETCAR</strong></h1>
-        <center>
-        <input name="username" placeholder="Kullanıcı Adı">
-        <input name="password" placeholder="Şifre">
+  <base href="/">
+  <link rel="stylesheet" href="/css/tasarim.css">
   
-        <button id="btn-login">GİRİŞ YAP</button>
-        <button id="btn-forgot">Henüz Kayıt Olmadın Mı? <a href="uyeliksayfası">Hemen Üye Ol!</a></button>
-        </center>
-      </div>
-    </form>
-
-</body>
-</html>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENT A CAR</title>
+  
+</head>
+<body>
+  <div class="section">
+    <div class="section-inner-_iner">
+      
+      <% if (locals.validation_error != undefined ||  locals.login_error !=undefined) { %>
+        <%- include('./partials/_message') %> 
+        <% } %>
+        <form action="/login-post" method="post" class="user">
+          
+          
+          <div class="login-box">
+            <h1 class="login-text"><strong>SETCAR</strong></h1>
+            <center>
+              <input type="email" name="email" placeholder="Mail" value="<%- typeof olds[0] != 'undefined' ?  olds[0].email :  '' %>">
+              <input type="password" name="password" placeholder="Şifre">
+              
+              <button id="btn-login">GİRİŞ YAP</button>
+              <button id="btn-forgot">Henüz Kayıt Olmadın Mı? <a href="/register">Hemen Üye Ol!</a></button>
+            </center>
+          </div>
+        </form>
+        
+      </div>   
+    </div>
+  </body>
+  </html>
