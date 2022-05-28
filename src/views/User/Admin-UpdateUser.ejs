@@ -1,0 +1,40 @@
+@model RentACarProjectDemo.Models.Entity.Users
+@{
+    ViewBag.Title = "UpdateUser";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+{
+
+    @Html.HiddenFor(u => u.UserId)
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            @Html.LabelFor(u => u.UserId)
+            @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Adı</label>
+            @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Soyadı</label>
+            @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Şifre</label>
+            @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Mail</label>
+            @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Telefon</label>
+            @Html.TextBoxFor(u => u.Telephone, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-warning">Kullanıcı Bilgilerini Güncelle</button>
+        <input type="hidden" name="Durum" value="True" />
+    </div>
+}
