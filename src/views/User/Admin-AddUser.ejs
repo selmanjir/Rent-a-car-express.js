@@ -1,0 +1,36 @@
+@model RentACarProjectDemo.Models.Entity.Users
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" style="width:35%" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Kullanıcı Adı</label>
+        @Html.TextAreaFor(u => u.UserName, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Adı</label>
+        @Html.TextAreaFor(u => u.FirstName, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Soyadı</label>
+        @Html.TextAreaFor(u => u.LastName, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Şifre</label>
+        @Html.TextAreaFor(u => u.Password, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Mail</label>
+        @Html.TextAreaFor(u => u.Email, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Telefon</label>
+        @Html.TextAreaFor(u => u.Telephone, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-primary" id="Btn1">Kullanıcı Ekle</button>
+    </div>
+</form>
