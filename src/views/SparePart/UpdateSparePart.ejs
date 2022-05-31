@@ -1,0 +1,31 @@
+
+@model RentACarProjectDemo.Models.Entity.SpareParts
+@{
+    ViewBag.Title = "UpdateSparePart";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateSparePart", "SparePart", FormMethod.Post))
+{
+    @Html.HiddenFor(u => u.SparePartId)
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            @Html.LabelFor(u => u.SparePartId)
+            @Html.TextBoxFor(u => u.SparePart, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Birim Fiyatı</label>
+            @Html.TextBoxFor(u => u.UnitPrice, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Stoktaki Ürün Adedi</label>
+            @Html.TextBoxFor(u => u.UnitsInStock, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-warning">Parça Güncelle</button>
+    </div>
+}
+
+
+
+@*<input type="hidden" name="Durum" value="True" />*@
