@@ -1,0 +1,24 @@
+@model RentACarProjectDemo.Models.Entity.SpareParts
+@{
+    ViewBag.Title = "AddSparePart";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" style="width:35%" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Parça Adı</label>
+        @Html.TextAreaFor(u => u.SparePart, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Birim Fiyatı</label>
+        @Html.TextAreaFor(u => u.UnitPrice, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Stoktaki Ürün Adedi</label>
+        @Html.TextAreaFor(u => u.UnitsInStock, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-primary" id="Btn1">Kullanıcı Ekle</button>
+    </div>
+</form>
