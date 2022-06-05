@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "1961512776.Sa",
     "database": "rent_a_car",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "1961512776.Sa",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "1961512776.Sa",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
