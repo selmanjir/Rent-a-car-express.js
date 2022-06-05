@@ -7,6 +7,7 @@ const {body, checkSchema, validationResult} = require('express-validator');
 
 const { home } = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
+const { adminLogin, adminLoginPost} = require('../controllers/admin_controller');
 
 const {registerValidate } = require('../middlewares/validation_middleware');
 const {checkAuth } = require('../middlewares/checkAuth');
@@ -21,5 +22,8 @@ router.post('/register-post', UnAuthenticated, checkAuth,registerPost)
 
 router.get('/login', UnAuthenticated, checkAuth, login)
 router.post('/login-post', UnAuthenticated, checkAuth, loginPost)
+
+router.get('/admin-login', UnAuthenticated, checkAuth, adminLogin)
+router.post('/admin-login-post', UnAuthenticated, checkAuth, adminLoginPost)
 
 module.exports = router;

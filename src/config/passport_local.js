@@ -2,6 +2,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
+const Admin = require('../models/admin');
 
 
 module.exports =  (passport) =>  {
@@ -64,6 +65,69 @@ module.exports =  (passport) =>  {
                 createdAt: user.createdAt,
                 updatedAt: user.updatedAt,
                 avatar: user.avatar
+            },
+        )
+        done(null, user);
+    });
+    
+
+    
+}
+module.exports =  (passport_admin) =>  {
+    const options = {
+        usernameField: 'email',
+        passwordField: 'password'
+    }
+    
+    passport_admin.use(new LocalStrategy(options, async (email, password, done) =>  {
+        
+        try {
+            const _findAdmin = await Admin.findOne({where : {
+                email : email
+            }});
+            
+            if (!_findAdmin) {
+                return done(null, false, {message : 'Kullanıcı bulunamadı'});
+            }
+            const checkPassword = await bcrypt.compare(password, _findAdmin.password);
+
+            if (!checkPassword) {
+                return done(null, false, {message : 'Hatalı şifre'});
+            }
+            else {
+                if (_findAdmin && _findAdmin.email_active == false) {
+                    return done(null, false, {message : 'Lütfen mailinizi onaylayın.'});
+                }else {
+                    
+                return done(null, _findAdmin);
+                }
+            }
+            
+            
+            
+            
+        } catch (err) {
+            return done(err);
+        }
+        
+    }));
+    
+    passport_admin.serializeUser((user, done) => {
+        //cookie de id sakla
+        console.log('sessiona kaydedildi'+ ' ' + user.email);
+        done(null, user.id);
+    })
+    passport_admin.deserializeUser(async(id, done)=> {
+        // cookie den okunan id değerinin kullanıcı tablosunda tekrar okunması ve kullanıcının geriye döndürülmesi
+        const user = await User.findOne(
+            
+            { where: { id: id } },
+            
+        )
+        user.update(
+            {
+                email: user.email,
+                password: user.password,
             },
         )
         done(null, user);
