@@ -116,7 +116,7 @@ const registerPost = async (req, res, next) => 	{
 const login = async (req, res, next) => {
     
     res.render('login',{
-        layout: './layout/login-layout.ejs'
+        layout: './layout/layout.ejs'
     });
 }
 const loginPost = async (req ,res, next) => {

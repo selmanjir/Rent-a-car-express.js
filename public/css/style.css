@@ -288,7 +288,7 @@ https://templatemo.com/tm-516-known
   }
 
   .custom-navbar .navbar-nav.navbar-nav-first {
-    margin-left: 8em;
+    margin-left: 1em;
   }
 
   .custom-navbar .navbar-nav.navbar-right li a {
@@ -311,8 +311,8 @@ https://templatemo.com/tm-516-known
   .custom-navbar .nav li a {
     line-height: 40px;
     color: #ffffff;
-    padding-right: 22px;
-    padding-left: 22px;
+    padding-right: 17px;
+    padding-left: 17px;
   }
 
   .custom-navbar .navbar-nav > li > a:hover,
