@@ -1,40 +1,6 @@
-@using RentACarProjectDemo.Models.Entity
-@model List<SpareParts>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
+<h2>Parçalar</h2>
 
-<h2 style="color:white">Parçalar</h2>
-<body style="background-color:white">
+
+<body>
+    <%- content  %> 
 </body>
-
-<table class="table users-table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Parça Adı</th>
-            <th scope="col">Birim Fiyatı</th>
-            <th scope="col">Stoktaki Ürün Adı</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var s in Model)
-            {
-            <tr>
-                <td>@s.SparePartId</td>
-                <td>@s.SparePart</td>
-                <td>@s.UnitPrice</td>
-                <td>@s.UnitsInStock</td>
-                <td>@Html.ActionLink("Sil", "DeleteSparePart", new { id = s.SparePartId }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Silmek istiyor musunuz ? ')" }) </td>
-                <td><a href="/SparePart/UpdateSparePart/@s.SparePartId" class="btn btn-sm btn-success">Güncelle</a></td>
-
-            </tr>
-        }
-
-        </tbody>
-
-    </table>
-
-    <a href="/SparePart/AddSparePart" class="btn btn-sm btn-primary">Yeni Parça Ekle</a>

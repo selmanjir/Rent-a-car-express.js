@@ -11,7 +11,7 @@ module.exports =  (passport) =>  {
         passwordField: 'password'
     }
     
-    passport.use(new LocalStrategy(options, async (email, password, done) =>  {
+    passport.use('user-local', new LocalStrategy(options, async (email, password, done) =>  {
         
         try {
             const _findUser = await User.findOne({where : {
@@ -73,13 +73,13 @@ module.exports =  (passport) =>  {
 
     
 }
-module.exports =  (passport_admin) =>  {
+module.exports =  (passport) =>  {
     const options = {
         usernameField: 'email',
         passwordField: 'password'
     }
     
-    passport_admin.use(new LocalStrategy(options, async (email, password, done) =>  {
+    passport.use('admin-local', new LocalStrategy(options, async (email, password, done) =>  {
         
         try {
             const _findAdmin = await Admin.findOne({where : {
@@ -94,17 +94,6 @@ module.exports =  (passport_admin) =>  {
             if (!checkPassword) {
                 return done(null, false, {message : 'Hatalı şifre'});
             }
-            else {
-                if (_findAdmin && _findAdmin.email_active == false) {
-                    return done(null, false, {message : 'Lütfen mailinizi onaylayın.'});
-                }else {
-                    
-                return done(null, _findAdmin);
-                }
-            }
-            
-            
-            
             
         } catch (err) {
             return done(err);
@@ -112,25 +101,25 @@ module.exports =  (passport_admin) =>  {
         
     }));
     
-    passport_admin.serializeUser((user, done) => {
+    passport.serializeUser((user, done) => {
         //cookie de id sakla
         console.log('sessiona kaydedildi'+ ' ' + user.email);
         done(null, user.id);
     })
-    passport_admin.deserializeUser(async(id, done)=> {
+    passport.deserializeUser(async(id, done)=> {
         // cookie den okunan id değerinin kullanıcı tablosunda tekrar okunması ve kullanıcının geriye döndürülmesi
-        const user = await User.findOne(
+        const admin = await Admin.findOne(
             
             { where: { id: id } },
             
         )
-        user.update(
+        admin.update(
             {
-                email: user.email,
-                password: user.password,
+                email: admin.email,
+                password: admin.password,
             },
         )
-        done(null, user);
+        done(null, admin);
     });
     
 
