@@ -11,6 +11,14 @@ const home = (req, res) => {
     });
 }
 
+const cars = (req, res) => {
+    res.render('cars',{
+    layout: './layout/layout.ejs'
+        
+    });
+}
+
 module.exports =  {
-    home
+    home, 
+    cars
 };
