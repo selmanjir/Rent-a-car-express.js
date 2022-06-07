@@ -18,7 +18,15 @@ const cars = (req, res) => {
     });
 }
 
+const motorcycle = (req, res) => {
+    res.render('motorcycle',{
+    layout: './layout/layout.ejs'
+        
+    });
+}
+
 module.exports =  {
     home, 
-    cars
+    cars,
+    motorcycle
 };

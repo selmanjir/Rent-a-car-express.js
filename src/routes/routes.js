@@ -5,7 +5,7 @@ const express = require('express');
 
 const {body, checkSchema, validationResult} = require('express-validator');
 
-const { home, cars} = require('../controllers/home_controller');
+const { home, cars, motorcycle} = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
 const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts} = require('../controllers/admin_controller');
 
@@ -34,5 +34,6 @@ router.post('/admin-update-spareParts', UnAuthenticated, checkAuth, updateSpareP
 router.post('/admin-update-sparePartsPost', UnAuthenticated, checkAuth, updateSparePartPost)
 
 router.get('/cars', cars);
+router.get('/motorcycle', motorcycle);
 
 module.exports = router;
