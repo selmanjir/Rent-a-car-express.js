@@ -1,0 +1,88 @@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- //font-awesome-icons -->
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <i class="fas fa-retweet" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value1</h4>
+            <button class="btn draw-border">Araç Sayısı</button>
+
+
+        </div>
+
+        <div class="card">
+            <i class="fas fa-motorcycle" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value2</h4>
+            <button class="btn draw-border">Motor Sayısı</button>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="card">
+            <i class="fas fa-tools" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value</h4>
+            <button class="btn draw-border">Aksesuar Sayısı</button>
+
+
+        </div>
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value4</h4>
+            <button class="btn draw-border">Yedek Parça Sayısı</button>
+
+        </div>
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value5</h4>
+            <button class="btn draw-border">Kullanıcı Sayısı</button>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value6</h4>
+            <button class="btn draw-border">En Aktif Üye</button>
+
+
+        </div>
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value7</h4>
+            <button class="btn draw-border">En Çok Tercih Edilen Araba</button>
+
+        </div>
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value8</h4>
+            <button class="btn draw-border">En Çok Tercih Edilen Motorsiklet</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-car" id="icon"></i>
+            <h4 class="ca-main">@ViewBag.value9</h4>
+            <button class="btn draw-border">Bugünki kiralama Sayısı</button>
+
+        </div>
+    </div>
+</body>
+</html>
