@@ -7,6 +7,7 @@ const mysql = require("mysql");
 const config = require("../config/db");
 const Admin = require("../models/admin");
 const SpareParts = require("../models/sparepart");
+const Accessories = require("../models/accessories");
 
 const {validationResult} = require('express-validator');
 const passport = require("passport");
@@ -36,9 +37,6 @@ const adminLoginPost = async (req ,res, next) => {
     (req, res, next);
     
 };
-
-
-
 
 const spareParts = async (req, res) => {
 
@@ -137,6 +135,59 @@ const updateSparePartPost = async (req, res ) => {
 
 }
 
+
+const accessories = async (req, res) => {
+
+    let results = "";
+    let content = "";
+    
+
+    const accessories = await Accessories.findAll();
+
+
+    accessories.forEach(element => {
+        results +=
+        ` 
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.accessoryName}</td>
+                <td>${element.unitPrice}</td>
+                <td>${element.unitInStock}</td>
+                <td> <a href="/admin-delete-accessories/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-accessories/${element.id}">Güncelle</a></td>
+            </tr>
+            
+        `
+
+    })
+    
+    content = `
+        
+
+            <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Aksesuar Adı</th>
+                    <th scope="col">Birim Fiyatı</th>
+                    <th scope="col">Stoktaki Ürün Miktarı</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Güncelle</th>
+            </tr>
+            
+                ${results}
+
+            
+                 `
+    
+    
+
+   console.log(content);
+    res.render('Admin/Accessory/Index.ejs', {
+        layout : '../views/layout/admin-layout.ejs',
+        content,
+        isAuth: req.isAuthenticated()
+        
+    })
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -145,5 +196,6 @@ module.exports = {
     addSparePartsPost,
     updateSparePart,
     updateSparePartPost,
-    deleteSpareParts
+    deleteSpareParts,
+    accessories
 }
