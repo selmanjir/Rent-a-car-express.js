@@ -112,7 +112,7 @@ const addSparePartsPost = async (req, res) => {
         isActive : true
     })
     newSparePart.save();
-    res.redirect('/admin-add-spareParts')
+    res.redirect('/admin-index-spareParts')
 }
 const updateSparePart = async (req, res) => {
     let content = await SpareParts.findOne({where : {id : req.params.id }})
@@ -207,8 +207,8 @@ const motorcycles = async (req, res) => {
                 <td>${element.brand}</td>
                 <td>${element.model}</td>
                 <td>${element.salePrice}</td>
-                <td> <a href="/admin-delete-accessories/${element.id}">Sil</a></td>
-                <td> <a href="/admin-update-accessories/${element.id}">Güncelle</a></td>
+                <td> <a href="/admin-delete-motorcycle/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-motorcycle/${element.id}">Güncelle</a></td>
             </tr>
             
         `
@@ -242,6 +242,29 @@ const motorcycles = async (req, res) => {
         
     })
 }
+const deleteMotorcycle = async (req, res ) => {
+    await Motorcycle.destroy({
+        where : {id : req.params.id}
+    })
+    res.redirect('/admin-index-motorcycle')
+}
+const addMotorcycle = async(req, res) => {
+    res.render('Admin/Motorcycle/AddMotorcycle.ejs', {
+        layout : './layout/admin-layout.ejs'
+    })
+}
+
+const addMotorcyclePost = async (req, res) => {
+    const newMotorcycle = await Motorcycle.create({
+        brand : req.body.brand,
+        model : req.body.model,
+        salePrice : req.body.salePrice,
+        isDeleted : false,
+        isActive : true
+    })
+    newMotorcycle.save();
+    res.redirect('/admin-index-motorcycle')
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -252,5 +275,8 @@ module.exports = {
     updateSparePartPost,
     deleteSpareParts,
     accessories,
-    motorcycles
+    motorcycles,
+    addMotorcycle,
+    addMotorcyclePost,
+    deleteMotorcycle
 }
