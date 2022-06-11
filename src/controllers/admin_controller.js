@@ -7,7 +7,8 @@ const mysql = require("mysql");
 const config = require("../config/db");
 const Admin = require("../models/admin");
 const SpareParts = require("../models/sparepart");
-const Accessories = require("../models/accessories");
+const Accessory = require("../models/accessory");
+const Motorcycle = require("../models/motorcycle");
 
 const {validationResult} = require('express-validator');
 const passport = require("passport");
@@ -142,7 +143,7 @@ const accessories = async (req, res) => {
     let content = "";
     
 
-    const accessories = await Accessories.findAll();
+    const accessories = await Accessory.findAll();
 
 
     accessories.forEach(element => {
@@ -188,6 +189,59 @@ const accessories = async (req, res) => {
         
     })
 }
+
+const motorcycles = async (req, res) => {
+
+    let results = "";
+    let content = "";
+    
+
+    const motorcycles = await Motorcycle.findAll();
+
+
+    motorcycles.forEach(element => {
+        results +=
+        ` 
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.brand}</td>
+                <td>${element.model}</td>
+                <td>${element.salePrice}</td>
+                <td> <a href="/admin-delete-accessories/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-accessories/${element.id}">Güncelle</a></td>
+            </tr>
+            
+        `
+
+    })
+    
+    content = `
+        
+
+            <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Marka</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Satış Fiyatı</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Güncelle</th>
+            </tr>
+            
+                ${results}
+
+            
+                 `
+    
+    
+
+   console.log(content);
+    res.render('Admin/Motorcycle/Index.ejs', {
+        layout : '../views/layout/admin-layout.ejs',
+        content,
+        isAuth: req.isAuthenticated()
+        
+    })
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -197,5 +251,6 @@ module.exports = {
     updateSparePart,
     updateSparePartPost,
     deleteSpareParts,
-    accessories
+    accessories,
+    motorcycles
 }
