@@ -1,4 +1,3 @@
-
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -58,39 +57,34 @@ const spareParts = async (req, res) => {
                 <td>${element.partName}</td>
                 <td>${element.unitPrice}</td>
                 <td>${element.unitInStock}</td>
-                <td><a href="/admin-delete-spareParts>Sil</a></td>
+                <td> <a href="/admin-delete-spareParts/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-spareParts/${element.id}">Güncelle</a></td>
             </tr>
             
         `
 
     })
-
     
     content = `
-        <table class="table">
-            <thead>
-                <tr>
+        
+
+            <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Parça Adı</th>
                     <th scope="col">Birim Fiyatı</th>
                     <th scope="col">Stoktaki Ürün Miktarı</th>
                     <th scope="col">Sil</th>
-                </tr>
-            </thead>
-            
-            <tbody>
+                    <th scope="col">Güncelle</th>
+            </tr>
             
                 ${results}
 
-            </tbody>
             
-                
-    
-        </table> `
+                 `
     
     
 
-   
+   console.log(content);
     res.render('Admin/SparePart/Index.ejs', {
         layout : '../views/layout/admin-layout.ejs',
         content,
@@ -100,7 +94,7 @@ const spareParts = async (req, res) => {
 }
 const deleteSpareParts = async (req, res ) => {
     await SpareParts.destroy({
-        where : {id : req.body.id}
+        where : {id : req.params.id}
     })
     res.redirect('/admin-index-spareParts')
 }
@@ -122,9 +116,24 @@ const addSparePartsPost = async (req, res) => {
     res.redirect('/admin-add-spareParts')
 }
 const updateSparePart = async (req, res) => {
+    let content = await SpareParts.findOne({where : {id : req.params.id }})
+    res.render('Admin/SparePart/UpdateSparePart.ejs', {
+        layout : './layout/admin-layout.ejs',
+        content
+})
 
 }
 const updateSparePartPost = async (req, res ) => {
+
+    let result = await SpareParts.findOne({where : {id : req.params.id}})
+
+    result.partName = req.body.partName,
+    result.unitInStock = req.body.unitInStock,
+    result.unitPrice = req.body.unitPrice
+
+    result.save();
+
+    res.redirect('/admin-index-spareParts')
 
 }
 

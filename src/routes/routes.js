@@ -27,11 +27,11 @@ router.get('/admin-login', UnAuthenticated, checkAuth, adminLogin)
 router.post('/admin-login-post', UnAuthenticated, checkAuth, adminLoginPost)
 
 router.get('/admin-index-spareParts', UnAuthenticated, checkAuth, spareParts)
-router.get('/admin-delete-spareParts', UnAuthenticated, checkAuth, deleteSpareParts)
+router.get('/admin-delete-spareParts/:id', UnAuthenticated, checkAuth, deleteSpareParts)
 router.get('/admin-add-spareParts', UnAuthenticated, checkAuth, addSpareParts)
 router.post('/admin-add-sparePartsPost', UnAuthenticated, checkAuth, addSparePartsPost)
-router.post('/admin-update-spareParts', UnAuthenticated, checkAuth, updateSparePart)
-router.post('/admin-update-sparePartsPost', UnAuthenticated, checkAuth, updateSparePartPost)
+router.get('/admin-update-spareParts/:id', UnAuthenticated, checkAuth, updateSparePart)
+router.post('/admin-update-sparePartsPost/:id', UnAuthenticated, checkAuth, updateSparePartPost)
 
 router.get('/cars', cars);
 router.get('/motorcycle', motorcycle);
