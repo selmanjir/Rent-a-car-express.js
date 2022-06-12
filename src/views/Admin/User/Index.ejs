@@ -1,48 +1,31 @@
-@using RentACarProjectDemo.Models.Entity
-@model List<Users>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
 
-<h2 style="color:white">Kullanıcılar</h2>
-<body style="background-color:white">
-</body>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    button{
+     background-color:  #3ea256;
+     color:#e2f9ff;
+     padding:10px 10px;
+     border:2px #096631 solid;
+     font-size: 15px;
+     border-radius: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+ }
+</style>
 
-<table class="table users-table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Kullanıcı Adı</th>
-            <th scope="col">Adı</th>
-            <th scope="col">Soyadı</th>
-            <th scope="col">Mail</th>
-            <th scope="col">Şifre</th>
-            <th scope="col">Telefon</th>
-            <th scope="col">Sil</th>
-            <th scope="col">Güncelle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var u in Model)
-            {
-            <tr>
-                <td>@u.UserId</td>
-                <td>@u.UserName</td>
-                <td>@u.FirstName</td>
-                <td>@u.LastName</td>
-                <td>@u.Email</td>
-                <td>@u.Password</td>
-                <td>@u.Telephone</td>
-                <td>@Html.ActionLink("Sil", "DeleteUser", new { id = u.UserId }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Silmek istiyor musunuz ? ')" }) </td>
-                <td><a href="/User/UpdateUser/@u.UserId" class="btn btn-sm btn-success">Güncelle</a></td>
+<h2>Kullanıcılar</h2>
 
-            </tr>
-        }
-
-        </tbody>
-
+<body>
+    <table class="table">
+        <%- content  %> 
     </table>
+    <br>
 
-    <a href="/User/AddUser" class="btn btn-sm btn-primary">Yeni Kullanıcı Ekle</a>
+    <form action="/admin-add-user" >
+        <button type="sumbit">Yeni Kullanıcı</button>
+    </form>
+    
+</body>

@@ -9,6 +9,7 @@ const Admin = require("../models/admin");
 const SpareParts = require("../models/sparepart");
 const Accessory = require("../models/accessory");
 const Motorcycle = require("../models/motorcycle");
+const User = require("../models/user");
 
 const {validationResult} = require('express-validator');
 const passport = require("passport");
@@ -286,6 +287,60 @@ const getMotorcyclePost = async (req, res ) => {
     res.redirect('/admin-index-motorcycle')
 
 }
+const users = async (req, res) => {
+
+    let results = "";
+    let content = "";
+    
+
+    const _users = await User.findAll();
+
+
+    _users.forEach(element => {
+        results +=
+        ` 
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.username}</td>
+                <td>${element.full_name}</td>
+                <td>${element.email}</td>
+                <td>${element.avatar}</td>
+                <td> <a href="/admin-delete-users/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-users/${element.id}">Güncelle</a></td>
+            </tr>
+            
+        `
+
+    })
+    
+    content = `
+        
+
+            <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <th scope="col">Ad Soyad</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Profil Fotoğrafı</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Güncelle</th>
+            </tr>
+            
+                ${results}
+
+            
+                 `
+    
+    
+
+   console.log(content);
+    res.render('Admin/User/Index.ejs', {
+        layout : '../views/layout/admin-layout.ejs',
+        content,
+        isAuth: req.isAuthenticated()
+        
+    })
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -301,5 +356,6 @@ module.exports = {
     addMotorcyclePost,
     deleteMotorcycle,
     getMotorcycle,
-    getMotorcyclePost
+    getMotorcyclePost,
+    users
 }
