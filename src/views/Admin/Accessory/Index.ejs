@@ -1,0 +1,40 @@
+@using RentACarProjectDemo.Models.Entity
+@model List<Accessories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 style="color:white">Aksesuarlar</h2>
+<body style="background-color:white">
+</body>
+
+<table class="table users-table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Aksesuar Adı</th>
+            <th scope="col">Birim Fiyatı</th>
+            <th scope="col">Stoktaki Ürün Adedi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var accessory in Model)
+            {
+            <tr>
+                <td>@accessory.AccessoryId</td>
+                <td>@accessory.AccessoryName</td>
+                <td>@accessory.UnitPrice</td>
+                <td>@accessory.UnitsInStock</td>
+                <td>@Html.ActionLink("Sil", "DeleteAccessory", new { id = accessory.AccessoryId }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Silmek istiyor musunuz ? ')" }) </td>
+                <td><a href="/Accessory/GetAccessory/@accessory.AccessoryId" class="btn btn-sm btn-success">Güncelle</a></td>
+
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+    <a href="/Accessory/AddAccessory" class="btn btn-sm btn-primary">Yeni Aksesuar Ekle</a>
