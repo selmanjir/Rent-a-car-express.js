@@ -1,0 +1,30 @@
+
+@model RentACarProjectDemo.Models.Entity.Accessories
+@{
+    ViewBag.Title = "GetAccessory";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateAccessory", "Accessory", FormMethod.Post))
+{
+
+    @Html.HiddenFor(u => u.AccessoryId)
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>Aksesuar Adı</label>
+            @Html.TextBoxFor(u => u.AccessoryName, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Birim Fiyatı</label>
+            @Html.TextBoxFor(u => u.UnitPrice, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Stoktaki Ürün Adedi</label>
+            @Html.TextBoxFor(u => u.UnitsInStock, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-warning">Aksesuar Güncelle</button>
+        <input type="hidden" name="Durum" value="True" />
+    </div>
+}
+
