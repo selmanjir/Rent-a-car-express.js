@@ -1,36 +1,25 @@
-@model RentACarProjectDemo.Models.Entity.Users
-@{
-    ViewBag.Title = "AddUser";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
-
-<form class="form-group" style="width:35%" method="post">
-    <div></div>
+<form action="/admin-add-userPost" method="post" class="form-group" style="width:35%">
     <div style="margin-top:15px">
         <label>Kullanıcı Adı</label>
-        @Html.TextAreaFor(u => u.UserName, new { @class = "form-control" })
+        <br>
+        <input type="text" name="username">
     </div>
     <div style="margin-top:15px">
-        <label>Adı</label>
-        @Html.TextAreaFor(u => u.FirstName, new { @class = "form-control" })
-    </div>
-    <div style="margin-top:15px">
-        <label>Soyadı</label>
-        @Html.TextAreaFor(u => u.LastName, new { @class = "form-control" })
-    </div>
-    <div style="margin-top:15px">
-        <label>Şifre</label>
-        @Html.TextAreaFor(u => u.Password, new { @class = "form-control" })
+        <label>Ad Soyad</label>
+        <br>
+        <input type="text" name="full_name">
     </div>
     <div style="margin-top:15px">
         <label>Mail</label>
-        @Html.TextAreaFor(u => u.Email, new { @class = "form-control" })
+        <br>
+        <input type="email" name="email">
     </div>
     <div style="margin-top:15px">
-        <label>Telefon</label>
-        @Html.TextAreaFor(u => u.Telephone, new { @class = "form-control" })
+        <label>Avatar</label>
+        <br>
+        <input type="text" name="avatar">
     </div>
     <div style="margin-top:15px">
-        <button class="btn btn-primary" id="Btn1">Kullanıcı Ekle</button>
+        <button type="submit" class="btn btn-primary" id="Btn1">Kullanıcı Ekle</button>
     </div>
 </form>

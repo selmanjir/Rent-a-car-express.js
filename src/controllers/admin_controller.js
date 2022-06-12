@@ -287,6 +287,7 @@ const getMotorcyclePost = async (req, res ) => {
     res.redirect('/admin-index-motorcycle')
 
 }
+
 const users = async (req, res) => {
 
     let results = "";
@@ -305,8 +306,8 @@ const users = async (req, res) => {
                 <td>${element.full_name}</td>
                 <td>${element.email}</td>
                 <td>${element.avatar}</td>
-                <td> <a href="/admin-delete-users/${element.id}">Sil</a></td>
-                <td> <a href="/admin-update-users/${element.id}">Güncelle</a></td>
+                <td> <a href="/admin-delete-user/${element.id}">Sil</a></td>
+                <td> <a href="/admin-update-user/${element.id}">Güncelle</a></td>
             </tr>
             
         `
@@ -341,6 +342,28 @@ const users = async (req, res) => {
         
     })
 }
+const addUser = async(req, res) => {
+    res.render('Admin/User/AddUser.ejs', {
+        layout : './layout/admin-layout.ejs'
+    })
+}
+const addUserPost = async (req, res) => {
+    const newUser = await User.create({
+        username : req.body.username,
+        full_name : req.body.full_name,
+        email : req.body.email,
+        avatar : req.body.avatar
+    })
+    newUser.save();
+    res.redirect('/admin-index-user')
+}
+const deleteUser = async (req, res ) => {
+    await User.destroy({
+        where : {id : req.params.id}
+    })
+    res.redirect('/admin-index-user')
+}
+
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -357,5 +380,8 @@ module.exports = {
     deleteMotorcycle,
     getMotorcycle,
     getMotorcyclePost,
-    users
+    users,
+    addUser,
+    addUserPost,
+    deleteUser
 }
