@@ -25,8 +25,15 @@ const motorcycle = (req, res) => {
     });
 }
 
+const spareparts = (req, res) => {
+    res.render('spareparts', {
+        layout: './layout/layout.ejs'
+    });
+}
+
 module.exports =  {
     home, 
     cars,
-    motorcycle
+    motorcycle,
+    spareparts
 };
