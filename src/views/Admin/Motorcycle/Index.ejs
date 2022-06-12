@@ -3,6 +3,17 @@
     table, th, td {
       border:1px solid black;
     }
+    button{
+     background-color:  #3ea256;
+     color:#e2f9ff;
+     padding:10px 10px;
+     border:2px #096631 solid;
+     font-size: 15px;
+     border-radius: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+ }
 </style>
 
 <h2>Parçalar</h2>
@@ -11,4 +22,10 @@
     <table class="table">
         <%- content  %> 
     </table>
+    <br>
+
+    <form action="/admin-add-motorcycle" >
+        <button type="sumbit">Yeni Motorsiklet</button>
+    </form>
+    
 </body>

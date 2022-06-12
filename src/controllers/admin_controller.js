@@ -208,7 +208,7 @@ const motorcycles = async (req, res) => {
                 <td>${element.model}</td>
                 <td>${element.salePrice}</td>
                 <td> <a href="/admin-delete-motorcycle/${element.id}">Sil</a></td>
-                <td> <a href="/admin-update-motorcycle/${element.id}">Güncelle</a></td>
+                <td> <a href="/admin-get-motorcycle/${element.id}">Güncelle</a></td>
             </tr>
             
         `
@@ -265,6 +265,27 @@ const addMotorcyclePost = async (req, res) => {
     newMotorcycle.save();
     res.redirect('/admin-index-motorcycle')
 }
+const getMotorcycle = async (req, res) => {
+    let content = await Motorcycle.findOne({where : {id : req.params.id }})
+    res.render('Admin/Motorcycle/GetMotorcycle.ejs', {
+        layout : './layout/admin-layout.ejs',
+        content
+})
+
+}
+const getMotorcyclePost = async (req, res ) => {
+
+    let result = await Motorcycle.findOne({where : {id : req.params.id}})
+
+    result.brand = req.body.brand,
+    result.model = req.body.model,
+    result.salePrice = req.body.salePrice
+
+    result.save();
+
+    res.redirect('/admin-index-motorcycle')
+
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -278,5 +299,7 @@ module.exports = {
     motorcycles,
     addMotorcycle,
     addMotorcyclePost,
-    deleteMotorcycle
+    deleteMotorcycle,
+    getMotorcycle,
+    getMotorcyclePost
 }
