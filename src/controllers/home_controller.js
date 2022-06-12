@@ -31,9 +31,15 @@ const spareparts = (req, res) => {
     });
 }
 
+const accessory = (req, res) => {
+    res.render('accessory',{
+        layout: './layout/layout.ejs'
+    });
+}
 module.exports =  {
     home, 
     cars,
     motorcycle,
-    spareparts
+    spareparts,
+    accessory
 };
