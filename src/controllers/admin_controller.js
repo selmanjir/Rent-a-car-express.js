@@ -363,6 +363,28 @@ const deleteUser = async (req, res ) => {
     })
     res.redirect('/admin-index-user')
 }
+const updateUser = async (req, res) => {
+    let content = await User.findOne({where : {id : req.params.id }})
+    res.render('Admin/User/UpdateUser.ejs', {
+        layout : './layout/admin-layout.ejs',
+        content
+})
+
+}
+const updateUserPost = async (req, res ) => {
+
+    let result = await User.findOne({where : {id : req.params.id}})
+
+    result.username = req.body.username,
+    result.full_name = req.body.full_name,
+    result.email = req.body.email,
+    result.avatar = req.body.avatar
+
+    result.save();
+
+    res.redirect('/admin-index-user')
+
+}
 
 module.exports = {
     adminLogin,
@@ -383,5 +405,7 @@ module.exports = {
     users,
     addUser,
     addUserPost,
-    deleteUser
+    deleteUser,
+    updateUser,
+    updateUserPost
 }
