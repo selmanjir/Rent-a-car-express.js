@@ -36,10 +36,17 @@ const accessory = (req, res) => {
         layout: './layout/layout.ejs'
     });
 }
+
+const aboutus = (req, res) => {
+    res.render('about-us',{
+        layout: './layout/layout.ejs'
+    });
+}
 module.exports =  {
     home, 
     cars,
     motorcycle,
     spareparts,
-    accessory
+    accessory,
+    aboutus
 };
