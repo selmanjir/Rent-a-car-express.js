@@ -42,11 +42,18 @@ const aboutus = (req, res) => {
         layout: './layout/layout.ejs'
     });
 }
+
+const contactus = (req, res) => {
+    res.render('contact-us',{
+        layout: './layout/layout.ejs'
+    });
+}
 module.exports =  {
     home, 
     cars,
     motorcycle,
     spareparts,
     accessory,
-    aboutus
+    aboutus,
+    contactus
 };
