@@ -1,0 +1,49 @@
+@model RentACarProjectDemo.Models.Entity.Cars
+@{
+    ViewBag.Title = "GetCar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateCar", "Car", FormMethod.Post))
+{
+
+    @Html.HiddenFor(u => u.CarId)
+    <div style=" margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>Marka</label>
+            @Html.DropDownListFor(c => c.Brands.BrandId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Renk</label>
+            @Html.DropDownListFor(c => c.Colors.ColorId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Model</label>
+            @Html.DropDownListFor(c => c.Models.ModelId, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Kasa Tipi</label>
+            @Html.DropDownListFor(c => c.BodyTypes.BodyTypeId, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Vites</label>
+            @Html.DropDownListFor(c => c.Gears.GearId, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Benzin Türü</label>
+            @Html.DropDownListFor(c => c.FuelTypes.FuelTypeId, (List<SelectListItem>)ViewBag.dgr6, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Açıklama</label>
+            @Html.TextBoxFor(c => c.Decription, new { @class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Model Yılı</label>
+            @Html.TextBoxFor(c => c.ModelYear, new { @class = "form-control" })
+        </div>
+
+        <button class="btn btn-warning">Araba Bilgilerini Güncelle</button>
+        <input type="hidden" name="Durum" value="True" />
+    </div>
+}
