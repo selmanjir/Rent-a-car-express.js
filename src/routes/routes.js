@@ -5,7 +5,7 @@ const express = require('express');
 
 const {body, checkSchema, validationResult} = require('express-validator');
 
-const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus} = require('../controllers/home_controller');
+const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus, cart} = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
 const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, deleteAccessory, addAccessory, addAccessoryPost,  getAccessory, getAccessoryPost, statistic, car} = require('../controllers/admin_controller');
 
@@ -60,9 +60,10 @@ router.get('/admin-index-car', UnAuthenticated, checkAuth, car)
 
 router.get('/cars', cars);
 router.get('/motorcycle', motorcycle);
-router.get('/spareparts', spareParts);
+router.get('/spareparts', spareparts);
 router.get('/accessory', accessory);
 router.get('/about-us', aboutus);
 router.get('/contact-us', contactus);
+router.get('/cart', cart);
 
 module.exports = router;

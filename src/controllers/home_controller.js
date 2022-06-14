@@ -48,6 +48,12 @@ const contactus = (req, res) => {
         layout: './layout/layout.ejs'
     });
 }
+
+const cart = (req, res) => {
+    res.render('cart',{
+        layout: './layout/layout.ejs'
+    })
+}
 module.exports =  {
     home, 
     cars,
@@ -55,5 +61,6 @@ module.exports =  {
     spareparts,
     accessory,
     aboutus,
-    contactus
+    contactus,
+    cart
 };
