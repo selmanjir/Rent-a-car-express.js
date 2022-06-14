@@ -10,9 +10,11 @@ const SpareParts = require("../models/sparepart");
 const Accessory = require("../models/accessory");
 const Motorcycle = require("../models/motorcycle");
 const User = require("../models/user");
+const Car = require("../models/car");
 
 const {validationResult} = require('express-validator');
 const passport = require("passport");
+const { cars } = require('./home_controller');
 require('../config/passport_local')(passport);
 
 
@@ -427,6 +429,24 @@ const updateUserPost = async (req, res ) => {
 
 }
 
+const statistic = async (req, res) => {
+
+    let NumberOfCars = await Car.findAndCountAll();
+    let NumberOfMotorcycles = await Motorcycle.findAndCountAll();
+    let NumberOfAccessories = await Accessory.findAndCountAll();
+    let NumberOfSpareParts = await SpareParts.findAndCountAll();
+    let NumberOfUsers = await User.findAndCountAll();
+
+
+    res.render('Admin/Statistic/Index.ejs', {
+        layout : '../views/layout/admin-layout.ejs',
+        NumberOfCars,
+        NumberOfMotorcycles,
+        NumberOfAccessories,
+        NumberOfSpareParts,
+        NumberOfUsers
+    })
+}
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -454,4 +474,5 @@ module.exports = {
     addAccessoryPost,
     getAccessory,
     getAccessoryPost,
+    statistic
 }

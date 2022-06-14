@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff
+}
+
+.login-page, .register-page {
+    -ms-flex-align: center;
+    align-items: center;
+    background: #e9ecef;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.login-logo, .register-logo {
+    font-size: 2.1rem;
+    font-weight: 300;
+    margin-bottom: 0.9rem;
+    text-align: center;
+}
+.login-box {
+    width: 360px;
+    height: 310px;
+}
+
+.login-box-msg, .register-box-msg {
+    margin: 0;
+    padding: 0 20px 20px;
+    text-align: center;
+}
+
+.wrapper, body {
+    min-height: 100%;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100%;
+}
+
+.login-card-body, .register-card-body {
+    background: #fff;
+    border-top: 0;
+    color: #666;
+    padding: 20px;
+}
+
+.login-card-body .input-group .form-control, .register-card-body .input-group .form-control {
+    border-right: 0;
+}
+
+.input-group-text{
+    background-color: transparent;
+    border-bottom-right-radius: 0.25rem;
+    border-left: 0;
+    border-top-right-radius: 0.25rem;
+    color: #777;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+a {
+    text-decoration: none;
+}
+
+.login-logo a, .register-logo a {
+    color: #495057;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 700;
+}
+
+.card {
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    width: 100%;
+    height: 75%;
+}
+.icheck-primary{
+    margin-top: 5px;
+
+}
+#remember {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
