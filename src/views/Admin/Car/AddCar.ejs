@@ -1,0 +1,47 @@
+
+
+
+@model RentACarProjectDemo.Models.Entity.Cars
+@{
+    ViewBag.Title = "AddCar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" style="width:35%" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Araç Markası</label>
+        @Html.DropDownListFor(c => c.Brands.BrandId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Araç Rengi</label>
+        @Html.DropDownListFor(c => c.Colors.ColorId, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Araç Modeli</label>
+        @Html.DropDownListFor(c => c.Models.ModelId, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kasa Tipi</label>
+        @Html.DropDownListFor(c => c.BodyTypes.BodyTypeId, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Vites Türü</label>
+        @Html.DropDownListFor(c => c.Gears.GearId, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yakıt Türü</label>
+        @Html.DropDownListFor(c => c.FuelTypes.FuelTypeId, (List<SelectListItem>)ViewBag.dgr6, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Model Yılı</label>
+        @Html.TextAreaFor(c => c.ModelYear, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Açıklama</label>
+        @Html.TextAreaFor(c => c.Decription, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-primary" id="Btn1">Araba Ekle</button>
+    </div>
+</form>
