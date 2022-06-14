@@ -429,6 +429,7 @@ const updateUserPost = async (req, res ) => {
 
 }
 
+
 const statistic = async (req, res) => {
 
     let NumberOfCars = await Car.findAndCountAll();
@@ -446,6 +447,80 @@ const statistic = async (req, res) => {
         NumberOfSpareParts,
         NumberOfUsers
     })
+}
+
+const car = async (req, res) => {
+
+    let results = "";
+    let content = "";
+    
+
+    const cars = await Car.findAll();
+
+
+    cars.forEach(element => {
+        results +=
+        ` 
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.brand}</td>
+                <td>${element.model}</td>
+                <td>${element.salePrice}</td>
+                <td> <a href="/admin-delete-car/${element.id}">Sil</a></td>
+                <td> <a href="/admin-get-car/${element.id}">Güncelle</a></td>
+            </tr>
+            
+        `
+
+    })
+    
+    content = `
+        
+
+            <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Marka</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Satış Fiyatı</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Güncelle</th>
+            </tr>
+            
+                ${results}
+
+            
+                 `
+    
+    
+
+   console.log(content);
+    res.render('Admin/Car/Index.ejs', {
+        layout : '../views/layout/admin-layout.ejs',
+        content,
+        
+    })
+}
+const addCar = async(req, res) => {
+    res.render('Admin/Car/AddCar.ejs', {
+        layout : './layout/admin-layout.ejs'
+    })
+}
+const addCarPost = async (req, res) => {
+    const newCar = await Car.create({
+        brand : req.body.brand,
+        model : req.body.model,
+        salePrice : req.body.salePrice,
+        isDeleted : false,
+        isActive : true
+    })
+    newCar.save();
+    res.redirect('/admin-index-car')
+}
+const deleteCar = async (req, res ) => {
+    await Car.destroy({
+        where : {id : req.params.id}
+    })
+    res.redirect('/admin-index-car')
 }
 module.exports = {
     adminLogin,
@@ -474,5 +549,9 @@ module.exports = {
     addAccessoryPost,
     getAccessory,
     getAccessoryPost,
-    statistic
+    statistic,
+    car,
+    addCar,
+    addCarPost,
+    deleteCar
 }

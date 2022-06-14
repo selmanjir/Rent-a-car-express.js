@@ -1,51 +1,31 @@
-@using RentACarProjectDemo.Models.Entity
-@model List<Cars>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
 
-<h2 style="color:white">Arabalar</h2>
-<body style="background-color:white">
-</body>
-<table class="table users-table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Marka</th>
-            <th scope="col">Renk</th>
-            <th scope="col">Model</th>
-            <th scope="col">Kasa Tipi</th>
-            <th scope="col">Vites</th>
-            <th scope="col">Benzin Türü</th>
-            <th scope="col">Model Yılı</th>
-            <th scope="col">Açıklama</th>
-            <th scope="col">Sil</th>
-            <th scope="col">Güncelle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var cars in Model)
-            {
-            <tr>
-                <td>@cars.CarId</td>
-                <td>@cars.Brands.BrandName</td>
-                <td>@cars.Colors.ColorName</td>
-                <td>@cars.Models.ModelName</td>
-                <td>@cars.BodyTypes.BodyType</td>
-                <td>@cars.Gears.Gear</td>
-                <td>@cars.FuelTypes.FuelType</td>
-                <td>@cars.ModelYear</td>
-                <td>@cars.Decription</td>
-                <td>@Html.ActionLink("Sil", "DeleteCar", new { id = cars.CarId }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Silmek istiyor musunuz ? ')" }) </td>
-                <td><a href="/Car/GetCar/@cars.CarId" class="btn btn-sm btn-success">Güncelle</a></td>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    button{
+     background-color:  #3ea256;
+     color:#e2f9ff;
+     padding:10px 10px;
+     border:2px #096631 solid;
+     font-size: 15px;
+     border-radius: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+ }
+</style>
 
-            </tr>
-        }
+<h2>Arabalar</h2>
 
-        </tbody>
-
+<body>
+    <table class="table">
+        <%- content  %> 
     </table>
+    <br>
 
-    <a href="/Car/AddCar" class="btn btn-sm btn-primary">Yeni Araç Ekle</a>
+    <form action="/admin-add-car" >
+        <button type="sumbit">Yeni Araba</button>
+    </form>
+    
+</body>

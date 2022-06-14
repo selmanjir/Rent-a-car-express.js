@@ -7,7 +7,7 @@ const {body, checkSchema, validationResult} = require('express-validator');
 
 const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus} = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
-const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, deleteAccessory, addAccessory, addAccessoryPost,  getAccessory, getAccessoryPost, statistic} = require('../controllers/admin_controller');
+const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, deleteAccessory, addAccessory, addAccessoryPost,  getAccessory, getAccessoryPost, statistic, car, addCar, addCarPost, deleteCar} = require('../controllers/admin_controller');
 
 const {registerValidate } = require('../middlewares/validation_middleware');
 const {checkAuth } = require('../middlewares/checkAuth');
@@ -55,6 +55,11 @@ router.get('/admin-update-user/:id', UnAuthenticated, checkAuth, updateUser)
 router.post('/admin-update-userPost/:id', UnAuthenticated, checkAuth, updateUserPost)
 
 router.get('/admin-index-statistic', UnAuthenticated, checkAuth, statistic)
+
+router.get('/admin-index-car', UnAuthenticated, checkAuth, car)
+router.get('/admin-add-car', UnAuthenticated, checkAuth, addCar)
+router.post('/admin-add-carPost', UnAuthenticated, checkAuth, addCarPost)
+router.get('/admin-delete-car/:id', UnAuthenticated, checkAuth, deleteCar)
 
 router.get('/cars', cars);
 router.get('/motorcycle', motorcycle);
