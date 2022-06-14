@@ -188,6 +188,28 @@ const accessories = async (req, res) => {
         
     })
 }
+const deleteAccessory = async (req, res ) => {
+    await Accessory.destroy({
+        where : {id : req.params.id}
+    })
+    res.redirect('/admin-index-accessory')
+}
+const addAccessory = async(req, res) => {
+    res.render('Admin/Accessory/AddAccessory.ejs', {
+        layout : './layout/admin-layout.ejs'
+    })
+}
+const addAccessoryPost = async (req, res) => {
+    const newAccessory = await Accessory.create({
+        accessoryName : req.body.accessoryName,
+        unitInStock : req.body.unitInStock,
+        unitPrice : req.body.unitPrice,
+        isDeleted : false,
+        isActive : true
+    })
+    newAccessory.save();
+    res.redirect('/admin-index-accessory')
+}
 const getAccessory = async (req, res) => {
     let content = await Accessory.findOne({where : {id : req.params.id }})
     res.render('Admin/Accessory/GetAccessory.ejs', {
@@ -427,6 +449,9 @@ module.exports = {
     updateUser,
     updateUserPost,
     accessories,
+    deleteAccessory,
+    addAccessory,
+    addAccessoryPost,
     getAccessory,
     getAccessoryPost,
 }
