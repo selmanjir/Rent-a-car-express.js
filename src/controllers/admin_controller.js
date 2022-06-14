@@ -500,6 +500,7 @@ const car = async (req, res) => {
         
     })
 }
+<<<<<<< HEAD
 const addCar = async(req, res) => {
     res.render('Admin/Car/AddCar.ejs', {
         layout : './layout/admin-layout.ejs'
@@ -522,6 +523,8 @@ const deleteCar = async (req, res ) => {
     })
     res.redirect('/admin-index-car')
 }
+=======
+>>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -550,8 +553,12 @@ module.exports = {
     getAccessory,
     getAccessoryPost,
     statistic,
+<<<<<<< HEAD
     car,
     addCar,
     addCarPost,
     deleteCar
+=======
+    car
+>>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
 }
