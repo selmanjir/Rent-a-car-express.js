@@ -5,7 +5,7 @@ const sequelize = require('../config/db');
 
   class Accessory extends Model {}
     Accessory.init({
-    partName: DataTypes.STRING,
+    accessoryName: DataTypes.STRING,
     unitPrice: DataTypes.STRING,
     unitInStock: DataTypes.INTEGER,
     isDeleted: DataTypes.BOOLEAN,

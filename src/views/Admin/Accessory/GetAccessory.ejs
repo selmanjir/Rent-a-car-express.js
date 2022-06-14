@@ -1,30 +1,29 @@
+<form action="/admin-get-accessoryPost/<%- content.id  %>" method="post" class="form-group" style="width:35%">
+    <div style="margin-top:15px">
 
-@model RentACarProjectDemo.Models.Entity.Accessories
-@{
-    ViewBag.Title = "GetAccessory";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
+        <label>Aksesuar Adı</label>
+        <br>
+        <input type="text" name="accessoryName" value="<%- content.accessoryName  %>">
 
-@using (Html.BeginForm("UpdateAccessory", "Accessory", FormMethod.Post))
-{
-
-    @Html.HiddenFor(u => u.AccessoryId)
-    <div style=" margin-bottom:15px"></div>
-    <div class="form-group">
-        <div style="margin-bottom:15px">
-            <label>Aksesuar Adı</label>
-            @Html.TextBoxFor(u => u.AccessoryName, new { @class = "form-control" })
-        </div>
-        <div style="margin-bottom:15px">
-            <label>Birim Fiyatı</label>
-            @Html.TextBoxFor(u => u.UnitPrice, new { @class = "form-control" })
-        </div>
-        <div style="margin-bottom:15px">
-            <label>Stoktaki Ürün Adedi</label>
-            @Html.TextBoxFor(u => u.UnitsInStock, new { @class = "form-control" })
-        </div>
-        <button class="btn btn-warning">Aksesuar Güncelle</button>
-        <input type="hidden" name="Durum" value="True" />
     </div>
-}
 
+
+    <div style="margin-top:15px">
+
+        <label>Satış Fiyatı</label>
+        <br>
+        <input type="text" name="unitPrice" value="<%- content.unitPrice  %>">
+
+    </div>
+
+    <div style="margin-top:15px">
+
+        <label>Stoktaki Ürün Miktarı</label>
+        <br>
+        <input type="text" name="unitInStock" value="<%- content.unitInStock  %> ">
+        
+    </div>
+    <div style="margin-top:15px">
+        <button type="submit" class="btn btn-primary" id="Btn1">Aksesuar Güncelle</button>
+    </div>
+</form>

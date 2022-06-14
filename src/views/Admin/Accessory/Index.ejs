@@ -1,40 +1,30 @@
-@using RentACarProjectDemo.Models.Entity
-@model List<Accessories>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Layout.cshtml";
-}
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    button{
+     background-color:  #3ea256;
+     color:#e2f9ff;
+     padding:10px 10px;
+     border:2px #096631 solid;
+     font-size: 15px;
+     border-radius: 5px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+ }
+</style>
 
-<h2 style="color:white">Aksesuarlar</h2>
-<body style="background-color:white">
-</body>
+<h2>Aksesuarlar</h2>
 
-<table class="table users-table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Aksesuar Adı</th>
-            <th scope="col">Birim Fiyatı</th>
-            <th scope="col">Stoktaki Ürün Adedi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var accessory in Model)
-            {
-            <tr>
-                <td>@accessory.AccessoryId</td>
-                <td>@accessory.AccessoryName</td>
-                <td>@accessory.UnitPrice</td>
-                <td>@accessory.UnitsInStock</td>
-                <td>@Html.ActionLink("Sil", "DeleteAccessory", new { id = accessory.AccessoryId }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Silmek istiyor musunuz ? ')" }) </td>
-                <td><a href="/Accessory/GetAccessory/@accessory.AccessoryId" class="btn btn-sm btn-success">Güncelle</a></td>
-
-            </tr>
-        }
-
-        </tbody>
-
+<body>
+    <table class="table">
+        <%- content  %> 
     </table>
+    <br>
 
-    <a href="/Accessory/AddAccessory" class="btn btn-sm btn-primary">Yeni Aksesuar Ekle</a>
+    <form action="/admin-add-accessor" >
+        <button type="sumbit">Yeni Aksesuar</button>
+    </form>
+    
+</body>

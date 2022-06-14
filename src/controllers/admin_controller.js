@@ -15,6 +15,7 @@ const {validationResult} = require('express-validator');
 const passport = require("passport");
 require('../config/passport_local')(passport);
 
+
 const adminLogin = async (req, res) => {
     
     res.render('Admin/AdminLogin.ejs', {
@@ -39,6 +40,7 @@ const adminLoginPost = async (req ,res, next) => {
     (req, res, next);
     
 };
+
 
 const spareParts = async (req, res) => {
 
@@ -103,7 +105,6 @@ const addSpareParts = async(req, res) => {
         layout : './layout/admin-layout.ejs'
     })
 }
-
 const addSparePartsPost = async (req, res) => {
     const newSparePart = await SpareParts.create({
         partName : req.body.partName,
@@ -137,17 +138,16 @@ const updateSparePartPost = async (req, res ) => {
 
 }
 
-
 const accessories = async (req, res) => {
 
     let results = "";
     let content = "";
     
 
-    const accessories = await Accessory.findAll();
+    const _accessories = await Accessory.findAll();
 
 
-    accessories.forEach(element => {
+    _accessories.forEach(element => {
         results +=
         ` 
             <tr>
@@ -155,8 +155,8 @@ const accessories = async (req, res) => {
                 <td>${element.accessoryName}</td>
                 <td>${element.unitPrice}</td>
                 <td>${element.unitInStock}</td>
-                <td> <a href="/admin-delete-accessories/${element.id}">Sil</a></td>
-                <td> <a href="/admin-update-accessories/${element.id}">Güncelle</a></td>
+                <td> <a href="/admin-delete-accessory/${element.id}">Sil</a></td>
+                <td> <a href="/admin-get-accessory/${element.id}">Güncelle</a></td>
             </tr>
             
         `
@@ -182,14 +182,34 @@ const accessories = async (req, res) => {
     
     
 
-   console.log(content);
     res.render('Admin/Accessory/Index.ejs', {
         layout : '../views/layout/admin-layout.ejs',
         content,
-        isAuth: req.isAuthenticated()
         
     })
 }
+const getAccessory = async (req, res) => {
+    let content = await Accessory.findOne({where : {id : req.params.id }})
+    res.render('Admin/Accessory/GetAccessory.ejs', {
+        layout : './layout/admin-layout.ejs',
+        content
+})
+
+}
+const getAccessoryPost = async (req, res ) => {
+
+    let result = await Accessory.findOne({where : {id : req.params.id}})
+
+    result.accessoryName = req.body.accessoryName,
+    result.unitInStock = req.body.unitInStock,
+    result.unitPrice = req.body.unitPrice
+
+    result.save();
+
+    res.redirect('/admin-index-accessory')
+
+}
+
 
 const motorcycles = async (req, res) => {
 
@@ -254,7 +274,6 @@ const addMotorcycle = async(req, res) => {
         layout : './layout/admin-layout.ejs'
     })
 }
-
 const addMotorcyclePost = async (req, res) => {
     const newMotorcycle = await Motorcycle.create({
         brand : req.body.brand,
@@ -395,7 +414,6 @@ module.exports = {
     updateSparePart,
     updateSparePartPost,
     deleteSpareParts,
-    accessories,
     motorcycles,
     addMotorcycle,
     addMotorcyclePost,
@@ -407,5 +425,8 @@ module.exports = {
     addUserPost,
     deleteUser,
     updateUser,
-    updateUserPost
+    updateUserPost,
+    accessories,
+    getAccessory,
+    getAccessoryPost,
 }

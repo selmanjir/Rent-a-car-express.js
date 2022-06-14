@@ -7,7 +7,7 @@ const {body, checkSchema, validationResult} = require('express-validator');
 
 const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus} = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
-const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, accessories, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost} = require('../controllers/admin_controller');
+const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, getAccessory, getAccessoryPost} = require('../controllers/admin_controller');
 
 const {registerValidate } = require('../middlewares/validation_middleware');
 const {checkAuth } = require('../middlewares/checkAuth');
@@ -33,7 +33,9 @@ router.post('/admin-add-sparePartsPost', UnAuthenticated, checkAuth, addSparePar
 router.get('/admin-update-spareParts/:id', UnAuthenticated, checkAuth, updateSparePart)
 router.post('/admin-update-sparePartsPost/:id', UnAuthenticated, checkAuth, updateSparePartPost)
 
-router.get('/admin-index-accessories', UnAuthenticated, checkAuth, accessories)
+router.get('/admin-index-accessory', UnAuthenticated, checkAuth, accessories)
+router.get('/admin-get-accessory/:id', UnAuthenticated, checkAuth, getAccessory)
+router.post('/admin-get-accessoryPost/:id', UnAuthenticated, checkAuth, getAccessoryPost)
 
 router.get('/admin-index-motorcycle', UnAuthenticated, checkAuth, motorcycles)
 router.get('/admin-delete-motorcycle/:id', UnAuthenticated, checkAuth, deleteMotorcycle)
