@@ -48,16 +48,6 @@ const contactus = (req, res) => {
         layout: './layout/layout.ejs'
     });
 }
-const Statistic = (req, res) => {
-
-    let NumberOfCars = await Car
-
-
-
-    res.render('/Admin/Statistic/Index.ejs', {
-
-    })
-}
 module.exports =  {
     home, 
     cars,
