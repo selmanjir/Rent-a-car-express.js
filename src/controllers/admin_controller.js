@@ -449,6 +449,7 @@ const statistic = async (req, res) => {
     })
 }
 
+
 const car = async (req, res) => {
 
     let results = "";
@@ -500,7 +501,6 @@ const car = async (req, res) => {
         
     })
 }
-<<<<<<< HEAD
 const addCar = async(req, res) => {
     res.render('Admin/Car/AddCar.ejs', {
         layout : './layout/admin-layout.ejs'
@@ -523,8 +523,29 @@ const deleteCar = async (req, res ) => {
     })
     res.redirect('/admin-index-car')
 }
-=======
->>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
+const getCar = async (req, res) => {
+    let content = await Car.findOne({where : {id : req.params.id }})
+    res.render('Admin/Car/GetCar.ejs', {
+        layout : './layout/admin-layout.ejs',
+        content
+})
+
+}
+const getCarPost = async (req, res ) => {
+
+    let result = await Car.findOne({where : {id : req.params.id}})
+
+    result.brand = req.body.brand,
+    result.model = req.body.model,
+    result.salePrice = req.body.salePrice
+
+    result.save();
+
+    res.redirect('/admin-index-car')
+
+}
+
+
 module.exports = {
     adminLogin,
     adminLoginPost,
@@ -553,12 +574,11 @@ module.exports = {
     getAccessory,
     getAccessoryPost,
     statistic,
-<<<<<<< HEAD
     car,
     addCar,
     addCarPost,
-    deleteCar
-=======
-    car
->>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
+    deleteCar,
+    getCar,
+    getCarPost
+
 }
