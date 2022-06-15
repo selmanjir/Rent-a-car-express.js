@@ -10,6 +10,30 @@
 <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251"/>
 <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.34013" />
 <link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.34013" />
+<script type="text/javascript">	JotForm.newDefaultTheme = true;
+	JotForm.extendsNewTheme = false;
+	JotForm.newPaymentUIForNewCreatedForms = false;
+	JotForm.newPaymentUI = true;
+
+	JotForm.init(function(){
+	/*INIT-START*/
+      productID = {"0":"input_3_1001","1":"input_3_1002","2":"input_3_1003"};
+      paymentType = "product";
+      JotForm.setCurrencyFormat('TL',true, 'point');
+      JotForm.totalCounter({"input_3_1001":{"price":"100"},"input_3_1002":{"price":"200"},"input_3_1003":{"price":"300"}});
+      $$('.form-product-custom_quantity').each(function(el, i){el.observe('blur', function(){isNaN(this.value) || this.value < 1 ? this.value = '0' : this.value = parseInt(this.value)})});
+      $$('.form-product-custom_quantity').each(function(el, i){el.observe('focus', function(){this.value == 0 ? this.value = '' : this.value})});
+      JotForm.handleProductLightbox();
+      setTimeout(function() {
+          TL('input_5').hint('ex: myname@example.com');
+       }, 20);
+	/*INIT-END*/
+	});
+
+   JotForm.prepareCalculationsOnTheFly([null,{"name":"clickTo","qid":"1","text":"PayPal Pro Payment Form","type":"control_head"},{"name":"submit","qid":"2","text":"Submit","type":"control_button"},{"name":"myProducts3","qid":"3","text":"My Products","type":"control_paypalpro"},{"name":"buyerName","qid":"4","text":"Buyer Name","type":"control_fullname"},{"name":"buyerEmail","qid":"5","subLabel":"example@example.com","text":"Buyer E-mail","type":"control_email"},{"name":"shippingAddress","qid":"6","text":"Shipping Address","type":"control_address"}]);
+   setTimeout(function() {
+JotForm.paymentExtrasOnTheFly([null,{"name":"clickTo","qid":"1","text":"PayPal Pro Payment Form","type":"control_head"},{"name":"submit","qid":"2","text":"Submit","type":"control_button"},{"name":"myProducts3","qid":"3","text":"My Products","type":"control_paypalpro"},{"name":"buyerName","qid":"4","text":"Buyer Name","type":"control_fullname"},{"name":"buyerEmail","qid":"5","subLabel":"example@example.com","text":"Buyer E-mail","type":"control_email"},{"name":"shippingAddress","qid":"6","text":"Shipping Address","type":"control_address"}]);}, 20); 
+</script>
 <body>
   <form style="background-color: red;" class="jotform-form" action="https://pci.jotform.com/submit/221647402383958" method="post" name="form_221647402383958" id="221647402383958" accept-charset="utf-8" autocomplete="on">
     <input type="hidden" name="formID" value="221647402383958" />
@@ -437,6 +461,14 @@
         </li>
       </ul>
     </div>
+    <input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="221647402383958" />
+    <script type="text/javascript">
+    var all_spc = document.querySelectorAll("form[id='221647402383958'] .si" + "mple" + "_spc");
+  for (var i = 0; i < all_spc.length; i++)
+  {
+    all_spc[i].value = "221647402383958-221647402383958";
+  }
+    </script>
   </form>
 </body>
 <script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.34013"></script>

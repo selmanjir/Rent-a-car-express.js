@@ -48,15 +48,19 @@ const contactus = (req, res) => {
         layout: './layout/layout.ejs'
     });
 }
-<<<<<<< HEAD
-=======
 
 const cart = (req, res) => {
     res.render('cart',{
         layout: './layout/layout.ejs'
     })
 }
->>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
+
+
+const paymentscreen = (req, res) => {
+    res.render('paymnet-screen',{
+        layout: './layout/layout.ejs'
+    });
+}
 module.exports =  {
     home, 
     cars,
@@ -65,5 +69,6 @@ module.exports =  {
     accessory,
     aboutus,
     contactus,
-    cart
+    cart,
+    paymentscreen
 };

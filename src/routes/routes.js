@@ -5,13 +5,10 @@ const express = require('express');
 
 const {body, checkSchema, validationResult} = require('express-validator');
 
-const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus, cart} = require('../controllers/home_controller');
+const { home, cars, motorcycle, spareparts, accessory, aboutus, contactus, cart, paymentscreen} = require('../controllers/home_controller');
 const { register, registerPost, login, loginPost} = require('../controllers/auth_controller');
-<<<<<<< HEAD
 const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, deleteAccessory, addAccessory, addAccessoryPost,  getAccessory, getAccessoryPost, statistic, car, addCar, addCarPost, deleteCar} = require('../controllers/admin_controller');
-=======
-const { adminLogin, adminLoginPost, spareParts, addSpareParts, addSparePartsPost, updateSparePart, updateSparePartPost, deleteSpareParts, motorcycles, addMotorcycle, addMotorcyclePost, deleteMotorcycle, getMotorcycle, getMotorcyclePost, users, addUser, addUserPost, deleteUser, updateUser, updateUserPost, accessories, deleteAccessory, addAccessory, addAccessoryPost,  getAccessory, getAccessoryPost, statistic, car} = require('../controllers/admin_controller');
->>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
+
 
 const {registerValidate } = require('../middlewares/validation_middleware');
 const {checkAuth } = require('../middlewares/checkAuth');
@@ -61,12 +58,9 @@ router.post('/admin-update-userPost/:id', UnAuthenticated, checkAuth, updateUser
 router.get('/admin-index-statistic', UnAuthenticated, checkAuth, statistic)
 
 router.get('/admin-index-car', UnAuthenticated, checkAuth, car)
-<<<<<<< HEAD
 router.get('/admin-add-car', UnAuthenticated, checkAuth, addCar)
 router.post('/admin-add-carPost', UnAuthenticated, checkAuth, addCarPost)
 router.get('/admin-delete-car/:id', UnAuthenticated, checkAuth, deleteCar)
-=======
->>>>>>> ed04ecb1eeabb191d819bba62ab24629eea87556
 
 router.get('/cars', cars);
 router.get('/motorcycle', motorcycle);
@@ -75,5 +69,6 @@ router.get('/accessory', accessory);
 router.get('/about-us', aboutus);
 router.get('/contact-us', contactus);
 router.get('/cart', cart);
+router.get('/payment-screen', paymentscreen);
 
 module.exports = router;
