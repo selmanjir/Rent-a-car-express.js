@@ -136,9 +136,46 @@ const loginPost = async (req ,res, next) => {
     (req, res, next);
     
 };
+
+const ProfilSayfasiniGoster = function (req, res, next) {
+    
+    res.render('profile', { layout: './layout/layout.ejs', 
+                user: req.user,
+                isAuth: req.isAuthenticated()})
+
+}
+
+const profilGuncelle = async function (req, res, next) {
+
+   try { 
+
+        const result = await user.update(
+            { user_name : req.body.user_name,
+              full_name : req.body.full_name
+            },
+            { where : {id : req.user.id}},
+        )
+
+        if (result) {
+            console.log("Guncelleme işlemi başarılı");
+            req.flash('success_message_black',[{msg  :'Bilgiler başarılı bir şekilde güncellendi'}])
+            res.redirect('/auth/profile')
+            
+        } else {
+            console.log("Guncelleme Başarısız");
+            res.redirect('/auth/profile')
+        }
+
+   } catch (error) {
+       console.log(error);
+   }
+}
+
 module.exports = {
     register,
     registerPost,
     login,
-    loginPost
+    loginPost,
+    ProfilSayfasiniGoster,
+    profilGuncelle
 }

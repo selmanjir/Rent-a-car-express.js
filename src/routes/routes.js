@@ -15,6 +15,10 @@ const {checkAuth } = require('../middlewares/checkAuth');
 
 const {Authenticated, UnAuthenticated, } = require('../middlewares/auth_middleware');
 
+const authController = require('../controllers/auth_controller');
+const authMiddleware = require('../middlewares/auth_middleware')
+const multerConfig = require('../../config/multer_config');
+
 const router = express.Router();
 router.get('/', home);
 
@@ -62,13 +66,19 @@ router.get('/admin-add-car', UnAuthenticated, checkAuth, addCar)
 router.post('/admin-add-carPost', UnAuthenticated, checkAuth, addCarPost)
 router.get('/admin-delete-car/:id', UnAuthenticated, checkAuth, deleteCar)
 
-router.get('/cars', cars);
-router.get('/motorcycle', motorcycle);
-router.get('/spareparts', spareparts);
-router.get('/accessory', accessory);
-router.get('/about-us', aboutus);
-router.get('/contact-us', contactus);
-router.get('/cart', cart);
-router.get('/payment-screen', paymentscreen);
+router.get('/cars', checkAuth, cars);
+router.get('/motorcycle', checkAuth, motorcycle);
+router.get('/spareparts', checkAuth, spareparts);
+router.get('/accessory', checkAuth, accessory);
+router.get('/about-us', checkAuth, aboutus);
+router.get('/contact-us', checkAuth, contactus);
+router.get('/cart', Authenticated, checkAuth, cart);
+router.get('/payment-screen', Authenticated, checkAuth, paymentscreen);
+
+
+router.get('/', authMiddleware.oturumAcilmis, authController.anaSayfayiGoster);
+
+router.get('/profile', authMiddleware.oturumAcilmis, authController.ProfilSayfasiniGoster);
+router.post('/profile-guncelle', authMiddleware.oturumAcilmis, multerConfig.single('avatar'), authController.profilGuncelle);
 
 module.exports = router;
